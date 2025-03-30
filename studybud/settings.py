@@ -16,6 +16,7 @@ import os
 PORT = os.getenv("PORT", "8000")  # Default to 8000 if PORT is not set
 
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -130,12 +131,22 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_URL = '/static/'
+# STATIC_URL = '/static/'
 MEDIA_URL = '/images/'
 
+# STATICFILES_DIRS = [
+#     BASE_DIR / 'static'
+# ]
+STATIC_URL = '/static/'
+
+# Add this line:
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# This is for development only (optional)
 STATICFILES_DIRS = [
-    BASE_DIR / 'static'
+    os.path.join(BASE_DIR, 'static'),
 ]
+
 
 MEDIA_ROOT = BASE_DIR / 'static/images'
 
