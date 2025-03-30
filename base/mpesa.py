@@ -18,13 +18,24 @@ class AccessToken:
     access_token = json.loads(request.text)['access_token']
 
 
+
 class Password:
     timestamp = datetime.now().strftime('%Y%m%d%H%M%S')
     short_code = '174379'
     pass_key = 'bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919'
     to_encode = short_code + pass_key + timestamp
-    encoded_password = base64.b64encode(to_encode.encode())
-    decoded_password = encoded_password.decode('utf-8')
+    encoded_password = base64.b64encode(to_encode.encode()).decode('utf-8')  # ✅ FIXED
+
+# Now `encoded_password` is a string, ready for JSON serialization.
+
+
+# class Password:
+#     timestamp = datetime.now().strftime('%Y%m%d%H%M%S')
+#     short_code = '174379'
+#     pass_key = 'bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919'
+#     to_encode = short_code + pass_key + timestamp
+#     encoded_password = base64.b64encode(to_encode.encode())
+#     decoded_password = encoded_password.decode('utf-8')
 
 
 
