@@ -1,0 +1,81 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Recent Donations | ImpactDonate</title>
+
+        <link rel="icon" href="{% static 'images/icon.png' %}" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .donation-card {
+            background: #fff;
+            border-radius: 10px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            padding: 15px;
+        }
+        .donation-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        .donation-image {
+            max-height: 180px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        .donate-again-btn {
+            background: #28a745;
+            border: none;
+            padding: 12px 25px;
+            font-size: 18px;
+        }
+        .donate-again-btn:hover {
+            background: #218838;
+        }
+    </style>
+</head>
+<body class="container mt-5 text-center">
+
+    <h2 class="text-success mb-4"><i class="fas fa-gift"></i> Recent Donations</h2>
+
+    <div class="row g-4" id="donationList">
+    {% if donations.exists %}
+        {% for donation in donations %}
+        <div class="col-lg-4 col-md-6 col-sm-12">
+            <div class="card donation-card shadow-lg border-0 rounded">
+                <div class="card-body">
+                    <h5 class="fw-bold text-primary"><i class="fas fa-user"></i> {{ donation.name }}</h5>
+                    <p class="fw-bold text-danger"><i class="fas fa-dollar-sign"></i> Amount: ${{ donation.amount }}</p>
+                    {% if donation.image %}
+                        <img src="{{ donation.image.url }}" class="img-fluid donation-image mb-3" alt="Donation Image">
+                    {% endif %}
+                    <p class="text-muted fst-italic"><i class="fas fa-comment"></i> {{ donation.message }}</p>
+                </div>
+            </div>
+        </div>
+
+        {% endfor %}
+        {% else %}
+            <p class="text-center text-muted">No donations available.</p>
+        {% endif %}
+    </div>
+
+    <a href="{% url 'donation_page' %}" class="btn btn-primary text-white mt-4">
+        <i class="fas fa-hand-holding-heart"></i> Donate Again
+    </a>
+
+    <script>
+        function editDonation(name, amount, message) {
+            // Store details in localStorage before redirecting
+            localStorage.setItem("editDonation", JSON.stringify({ name, amount, message }));
+            // Redirect to the donation form
+            window.location.href = "{% url 'donation_page' %}";
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,213 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | ImpactDonate</title>
+
+        <!-- Favicon -->
+        <link rel="icon" href="{% static 'images/icon.png' %}" type="image/x-icon">
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #d3d3d3; /* Light grey background */
+            position: relative;
+        }
+
+        /* Background Watermark */
+        body::before {
+            content: "ImpactDonate ImpactDonate ImpactDonate ImpactDonate";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 100px;
+            font-weight: bold;
+            color: rgba(0, 0, 0, 0.05);
+            white-space: nowrap;
+            z-index: 0;
+        }
+
+        .container, .section, .footer, .hero-section {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Navbar */
+        .navbar-brand img {
+            height: 50px;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: url({% static 'images/44.jpg' %}) no-repeat center center/cover;
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+        }
+        
+        .hero-section h1 {
+            font-size: 3rem;
+            font-weight: 700;
+        }
+
+        /* Section Styling */
+        .section {
+            padding: 60px 20px;
+        }
+
+        .section.bg-light {
+            background-color: #f8f9fa;
+        }
+
+        /* Buttons */
+        .btn-primary-custom {
+            background-color: #007bff;
+            color: white;
+            font-weight: 600;
+            border: none;
+        }
+
+        .btn-primary-custom:hover {
+            background-color: #0056b3;
+            color: white;
+        }
+
+        /* Bold Black Text */
+        .bold-black {
+            font-weight: bold;
+            color: black;
+        }
+
+        /* Footer */
+        .footer {
+            background: #343a40;
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        .footer a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .footer a:hover {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">
+    <div class="container">
+        <a class="navbar-brand" href="{% url 'home' %}">
+            <img src="{% static 'images/icon.png' %}" alt="ImpactDonate"> <i><b>ImpactDonate</b></i>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <a class="nav-link text-white" href="{% url 'home' %}">Home</a>
+                <a class="nav-link text-white" href="{% url 'about' %}">About</a>
+                <a class="nav-link text-white" href="{% url 'contact' %}">Contact</a>
+                <a href="{% url 'donation_page' %}" class="btn btn-primary btn-lg w-80 border border-primary text-light">
+                    <i class="fas fa-donate"></i> Donate
+                </a>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<header class="hero-section">
+    <div class="container">
+        <h1>Help The Children</h1>
+        <p class="lead">We do whatever it takes to make sure children don’t just survive but thrive.</p>
+    </div>
+</header>
+
+<!-- Mission Section -->
+<section class="section">
+    <div class="container text-center">
+        <h3 class="mb-4 bold-black">Our Mission</h3>
+        <p>We are dedicated to providing care, protection, and a better future for children around the world.</p>
+        <div class="row mt-5">
+            <div class="col-md-4">
+                <h4 class="bold-black">Saving Children</h4>
+                <p>We rescue displaced children and provide them with shelter and education.</p>
+            </div>
+            <div class="col-md-4">
+                <h4 class="bold-black">Peace on Earth</h4>
+                <p>We work with global partners to establish peace and secure futures.</p>
+            </div>
+            <div class="col-md-4">
+                <h4 class="bold-black">Care & Protection</h4>
+                <p>We provide global care and protection to support children in need.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Latest Causes -->
+<section class="section bg-light">
+    <div class="container text-center">
+        <h3 class="mb-4 bold-black">Latest Causes</h3>
+        <p>Discover charity projects you can support today.</p>
+        <div class="row mt-5">
+            <div class="col-md-4">
+                <img src="{% static 'images/recycle.jpg' %}" class="img-fluid rounded mb-3" alt="Recycling for Charity">
+                <h5 class="bold-black">Recycling for Charity</h5>
+            </div>
+            <div class="col-md-4">
+                <img src="{% static 'images/water.jpg' %}" class="img-fluid rounded mb-3" alt="Clean Water for People">
+                <h5 class="bold-black">Clean Water For People</h5>
+            </div>
+            <div class="col-md-4">
+                <img src="{% static 'images/happy.jpg' %}" class="img-fluid rounded mb-3" alt="Children’s Education">
+                <h5 class="bold-black">Children’s Education</h5>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Subscribe Section -->
+<section class="section text-center">
+    <div class="container">
+        <h3 class="bold-black">Stay Connected with Us</h3>
+        <p>Subscribe to our newsletter and be the first to hear about our latest projects, impact stories, and ways to make a difference.</p>
+        <form method="post" class="d-flex justify-content-center mt-3">
+            {% csrf_token %}
+            <input type="email" name="email" class="form-control w-50" placeholder="Subscribe" required>
+            <button class="btn btn-primary ms-2" type="submit">Subscribe Now</button>
+        </form>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <a href="#"><img src="{% static 'images/icon.png' %}" alt="Logo" width="50" height="51"></a><br>
+        <p>&copy; 2025 ImpactDonate. All Rights Reserved.</p>
+    </div>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
