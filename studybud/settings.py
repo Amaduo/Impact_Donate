@@ -152,6 +152,14 @@ STATICFILES_DIRS = [
 ]
 
 
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = "amaduoadul555@gmail.com"  # Replace with your email
+EMAIL_HOST_PASSWORD = "Adul14!"  # Replace with your app password
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
 MEDIA_ROOT = BASE_DIR / 'static/images'
 
 # STATIC_ROOT =
